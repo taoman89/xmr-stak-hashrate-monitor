@@ -43,7 +43,7 @@ async function monitorHashRate(){
 
 
       const currentHashRate = minerDetails.hashrate.total[0];
-      const totalUpTimeHrs =  minerDetails.connection.uptime/ 3600;
+      const totalUpTimeHrs =  Math.floor(minerDetails.connection.uptime/ 3600);
       const totalUpTimeMins = Math.floor(minerDetails.connection.uptime / 60) - totalUpTimeHrs * 60;
 
       if(initialHashRate === 0){
