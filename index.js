@@ -64,9 +64,11 @@ async function monitorHashRate(){
       sleep(3000).then(()=>{
         nodeCmd.run(exeFileForRestart);
       });
+    }finally{
+      log(`unlocking awaitResponse Bool`)
+      awaitingResponse = false;
     }
 
-    awaitingResponse = false;
   }
 }
 
