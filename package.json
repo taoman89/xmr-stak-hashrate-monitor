@@ -4,11 +4,15 @@
   "description": "xmr-stak hashrate monitor",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js"
   },
   "author": "taoman",
   "license": "MIT",
   "dependencies": {
-    "node-cmd": "^3.0.0"
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "node-cmd": "^3.0.0",
+    "request-promise": "^4.2.2"
   }
 }
