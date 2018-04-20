@@ -1,14 +1,15 @@
-// import nodeCmd from 'node-cmd';
+import nodeCmd from 'node-cmd';
 import rp from 'request-promise';
+import sleep from 'sleep-promise';
+
 
 // Configs
-//const machineIP = '127.0.0.1';
-const machineIP = 'http://192.168.1.90';
+const machineIP = 'http://localhost';
 const machinePort = '9999';
 const hashRateDrop = 250;
 const exeFileForRestart = '';
-const monitorIntervalSeconds = 1;
-const timeoutAllowance = 5;
+const monitorIntervalSeconds = 60;
+const timeoutAllowance = 3;
 const gmtOffset = 8; // Set for Singapore timezone
 // End Configs
 
@@ -57,7 +58,10 @@ async function monitorHashRate(){
 
     }catch(err){
       log(err);
-      log('Do something here');
+      log('Restarting in 3 seconds');
+      sleep(3000).then(()=>{
+        nodeCmd.run(exeFileForRestart);
+      });
     }
 
     awaitingResponse = false;
