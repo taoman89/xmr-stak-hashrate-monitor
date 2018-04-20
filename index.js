@@ -59,7 +59,7 @@ async function monitorHashRate(){
       if(currentHashRate < initialHashRate) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${initialHashRate}`);
 
     }catch(err){
-      log(err);
+      console.log(err);
       log('Restarting in 3 seconds');
       sleep(3000).then(()=>{
         nodeCmd.run(exeFileForRestart);
