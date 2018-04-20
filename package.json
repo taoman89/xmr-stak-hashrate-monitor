@@ -1,0 +1,14 @@
+{
+  "name": "xmr-stak-hashrate-monitor",
+  "version": "1.0.0",
+  "description": "xmr-stak hashrate monitor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "taoman",
+  "license": "MIT",
+  "dependencies": {
+    "node-cmd": "^3.0.0"
+  }
+}
