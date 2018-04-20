@@ -43,7 +43,8 @@ async function monitorHashRate(){
 
 
       const currentHashRate = minerDetails.hashrate.total[0];
-      const totalUpTime = minerDetails.connection.uptime / 60 > 60? Math.floor(minerDetails.connection.uptime/ 3600) + ' hrs': Math.floor(minerDetails.connection.uptime / 60) + ' mins';
+      const totalUpTimeHrs =  minerDetails.connection.uptime/ 3600;
+      const totalUpTimeMins = Math.floor(minerDetails.connection.uptime / 60) - totalUpTimeHrs * 60;
 
       if(initialHashRate === 0){
         initialHashRate = currentHashRate;
@@ -54,7 +55,7 @@ async function monitorHashRate(){
       log(`initialHashRate: ${initialHashRate}`);
       log(`rebootHashRate: ${rebootHashRate}`);
       log(`currentHashRate: ${currentHashRate}`);
-      log(`totalUpTime: ${totalUpTime}`);
+      log(`totalUpTime: ${totalUpTimeHrs} hrs ${totalUpTimeMins} mins`);
 
       if(currentHashRate < rebootHashRate) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${rebootHashRate}`);
 
