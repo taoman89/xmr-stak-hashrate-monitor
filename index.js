@@ -56,7 +56,7 @@ async function monitorHashRate(){
       log(`currentHashRate: ${currentHashRate}`);
       log(`totalUpTime: ${totalUpTime}`);
 
-      if(currentHashRate < initialHashRate) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${initialHashRate}`);
+      if(currentHashRate < rebootHashRate) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${rebootHashRate}`);
 
     }catch(err){
       console.log(err);
