@@ -7,6 +7,7 @@ import sleep from 'sleep-promise';
 const machineIP = 'http://localhost';
 const machinePort = '9999';
 const hashRateDrop = 250;
+const minGoodSharePercentage = 90;
 const exeFileForRestart = '';
 const monitorIntervalSeconds = 60;
 const timeoutAllowance = 3;
@@ -45,6 +46,10 @@ async function monitorHashRate(){
       const currentHashRate = minerDetails.hashrate.total[0];
       const totalUpTimeHrs =  Math.floor(minerDetails.connection.uptime/ 3600);
       const totalUpTimeMins = Math.floor(minerDetails.connection.uptime / 60) - totalUpTimeHrs * 60;
+      const totalGoodShares = minerDetails.results.shares_good;
+      const totalShares = minerDetails.results.shares_total;
+      const goodSharePercentage = totalGoodShares/totalShares * 100;
+
 
       if(initialHashRate === 0){
         initialHashRate = currentHashRate;
@@ -52,12 +57,17 @@ async function monitorHashRate(){
       }
 
 
-      log(`initialHashRate: ${initialHashRate}`);
-      log(`rebootHashRate: ${rebootHashRate}`);
-      log(`currentHashRate: ${currentHashRate}`);
-      log(`totalUpTime: ${totalUpTimeHrs} hrs ${totalUpTimeMins} mins`);
+      log(`initialHashRate: ${initialHashRate}\n`);
+      log(`rebootHashRate: ${rebootHashRate}\n`);
+      log(`currentHashRate: ${currentHashRate}\n`);
+      log(`totalUpTime: ${totalUpTimeHrs} hrs ${totalUpTimeMins} mins\n`);
+
+      log(`totalGoodShares: ${totalGoodShares}\n`);
+      log(`totalShares: ${totalShares}\n`);
+      log(`goodSharePercentage: ${goodSharePercentage}\n`);
 
       if(currentHashRate < rebootHashRate) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${rebootHashRate}`);
+      if(goodSharePercentage < minGoodSharePercentage) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${rebootHashRate}`);
 
     }catch(err){
       console.log(err);
