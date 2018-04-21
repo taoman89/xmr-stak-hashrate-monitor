@@ -24,6 +24,7 @@ async function monitorHashRate(){
   if(!awaitingResponse){
     awaitingResponse = true;
 
+    console.log('\n\n\n\n\n');
 
     let apiURL = `${machineIP}:${machinePort}/api.json`;
     log(`Calling ${apiURL}`);
@@ -33,7 +34,7 @@ async function monitorHashRate(){
         timeout: timeoutAllowance * 1000
       }));
 
-      log(minerDetails);
+      log(minerDetails + '\n\n\n');
 
       if(!minerDetails.hashrate
         || !minerDetails.hashrate.total
@@ -64,7 +65,7 @@ async function monitorHashRate(){
 
       log(`totalGoodShares: ${totalGoodShares}\n`);
       log(`totalShares: ${totalShares}\n`);
-      log(`goodSharePercentage: ${goodSharePercentage}\n`);
+      log(`goodSharePercentage: ${goodSharePercentage}%\n`);
 
       if(currentHashRate < rebootHashRate) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${rebootHashRate}`);
       if(goodSharePercentage < minGoodSharePercentage) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${rebootHashRate}`);
