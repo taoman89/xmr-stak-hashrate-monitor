@@ -7,7 +7,7 @@ import sleep from 'sleep-promise';
 const machineIP = 'http://localhost';
 const machinePort = '9999';
 const hashRateDrop = 250;
-const minGoodSharePercentage = 97;
+const minGoodSharePercentage = 98;
 const exeFileForRestart = '';
 const monitorIntervalSeconds = 60;
 const timeoutAllowance = 3;
