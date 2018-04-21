@@ -34,7 +34,8 @@ async function monitorHashRate(){
         timeout: timeoutAllowance * 1000
       }));
 
-      log(minerDetails + '\n\n\n');
+      log(minerDetails);
+      console.log('\n\n\n');
 
       if(!minerDetails.hashrate
         || !minerDetails.hashrate.total
