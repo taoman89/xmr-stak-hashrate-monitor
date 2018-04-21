@@ -76,6 +76,8 @@ async function monitorHashRate(){
       log('Restarting in 3 seconds');
       sleep(3000).then(()=>{
         nodeCmd.run(exeFileForRestart);
+        initialHashRate = 0;
+        rebootHashRate = 0;
       });
     }finally{
       log(`unlocking awaitResponse Bool`)
