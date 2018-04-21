@@ -49,7 +49,7 @@ async function monitorHashRate(){
       const totalUpTimeMins = Math.floor(minerDetails.connection.uptime / 60) - totalUpTimeHrs * 60;
       const totalGoodShares = minerDetails.results.shares_good;
       const totalShares = minerDetails.results.shares_total;
-      const goodSharePercentage = totalGoodShares/totalShares * 100;
+      const goodSharePercentage = Math.floor(totalGoodShares/totalShares * 100);
 
 
       if(initialHashRate === 0){
