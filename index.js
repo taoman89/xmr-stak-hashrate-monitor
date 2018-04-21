@@ -69,7 +69,7 @@ async function monitorHashRate(){
       log(`goodSharePercentage: ${goodSharePercentage}%\n`);
 
       if(currentHashRate < rebootHashRate) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${rebootHashRate}`);
-      if(goodSharePercentage < minGoodSharePercentage) throw new Error(`Needs to reboot... ${currentHashRate} lower than ${rebootHashRate}`);
+      if(goodSharePercentage < minGoodSharePercentage) throw new Error(`Needs to reboot... ${goodSharePercentage} lower than ${minGoodSharePercentage}`);
 
     }catch(err){
       console.log(err);
